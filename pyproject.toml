@@ -1,0 +1,70 @@
+[project]
+name = "ml-practice"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "William Keating", email = "54231777+keatingw@users.noreply.github.com" },
+]
+dependencies = []
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["maturin>=1.2,<2.0"]
+build-backend = "maturin"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "pip>=24.1.2",
+    "ipython>=8.26.0",
+    "ruff>=0.5.2",
+    "mypy>=1.10.1",
+]
+
+[tool.maturin]
+python-source = "python"
+module-name = "ml_practice._lowlevel"
+features = ["pyo3/extension-module"]
+
+[tool.ruff]
+target-version = "py312"
+src = ["python"]
+fix = true                                                  # autofix on (only for fixable list)
+show-fixes = true                                           # show fixes made
+include = ["*.py", "*.pyi", "**/pyproject.toml", "*.ipynb"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+pydocstyle.convention = "google"
+select = ["ALL"]
+ignore = [
+    "E501",    # ignore line length
+    "PD013",   # allow stack as well as melt
+    "PD901",   # allow 'df' dataframe naming
+    "PD010",   # allow pandas .pivot method
+    "PD009",   # `iat` is allowed
+    "PD011",   # allow `.values` methods given false positives
+    "B023",    # allow loops to set new variables
+    "B905",    # allow non-specific zip strictness
+    "PLR2004", # allow literals in comparisons
+    "D105",    # don't force docstrings on magic methods
+    "D107",    # don't force docstrings on init
+    "FIX002",  # allow TODO
+    "RUF012",  # ignore mutable classvar
+    "RUF013",  # implicit optional handled by mypy strict
+    "COM812",  # allow no trailing comma
+    "TD003",   # no issue links on todos
+    "G004",    # allow fstring logging
+    "SLF001",  # allow private access so lxml doesn't complain
+    "ANN101",  # allow no type hint on self
+    "ANN102",  # allow no type hint on cls
+    "ANN401",  # allow Any on kwargs
+    "ISC001",  # conflict with formatter
+]
+fixable = [
+    "I001", # autofix for isort
+]
+per-file-ignores = { "tests/*.py" = ["S101", "INP001", "D104"] }

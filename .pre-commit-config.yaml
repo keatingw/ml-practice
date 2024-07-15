@@ -1,0 +1,51 @@
+repos:
+  - repo: https://github.com/crate-ci/typos
+    rev: typos-v0.10.26
+    hooks:
+      - id: typos
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-ast
+      - id: check-added-large-files
+      - id: check-json
+      - id: check-toml
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+      - id: check-case-conflict
+      - id: detect-private-key
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: debug-statements
+      - id: check-toml
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+      - id: python-check-blanket-noqa
+      - id: python-check-blanket-type-ignore
+      - id: python-use-type-annotations
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: "v0.5.2"
+    hooks:
+      - id: ruff
+        args: [--exit-non-zero-on-fix]
+      - id: ruff-format
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: rye run mypy python
+        language: system
+        types: [python]
+        files: '^.*\.py'
+        require_serial: false
+        pass_filenames: false
+      - id: rye-lock
+        name: rye lock
+        entry: rye lock
+        language: system
+        files: '^pyproject\.toml$'
+        require_serial: false
+        pass_filenames: false
