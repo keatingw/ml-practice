@@ -5,7 +5,11 @@ description = "Add your description here"
 authors = [
     { name = "William Keating", email = "54231777+keatingw@users.noreply.github.com" },
 ]
-dependencies = ["numpy>=2.0.0", "scikit-learn>=1.5.1"]
+dependencies = [
+    "numpy>=2.0.0",
+    "scikit-learn>=1.5.1",
+    "matplotlib>=3.9.1",
+]
 readme = "README.md"
 requires-python = ">= 3.8"
 

@@ -12,28 +12,44 @@
 -e file:.
 asttokens==2.4.1
     # via stack-data
+contourpy==1.2.1
+    # via matplotlib
+cycler==0.12.1
+    # via matplotlib
 decorator==5.1.1
     # via ipython
 executing==2.0.1
     # via stack-data
+fonttools==4.53.1
+    # via matplotlib
 ipython==8.26.0
 jedi==0.19.1
     # via ipython
 joblib==1.4.2
     # via scikit-learn
+kiwisolver==1.4.5
+    # via matplotlib
+matplotlib==3.9.1
+    # via ml-practice
 matplotlib-inline==0.1.7
     # via ipython
 mypy==1.10.1
 mypy-extensions==1.0.0
     # via mypy
 numpy==2.0.0
+    # via contourpy
+    # via matplotlib
     # via ml-practice
     # via scikit-learn
     # via scipy
+packaging==24.1
+    # via matplotlib
 parso==0.8.4
     # via jedi
 pexpect==4.9.0
     # via ipython
+pillow==10.4.0
+    # via matplotlib
 pip==24.1.2
 prompt-toolkit==3.0.47
     # via ipython
@@ -43,6 +59,10 @@ pure-eval==0.2.2
     # via stack-data
 pygments==2.18.0
     # via ipython
+pyparsing==3.1.2
+    # via matplotlib
+python-dateutil==2.9.0.post0
+    # via matplotlib
 ruff==0.5.2
 scikit-learn==1.5.1
     # via ml-practice
@@ -50,6 +70,7 @@ scipy==1.14.0
     # via scikit-learn
 six==1.16.0
     # via asttokens
+    # via python-dateutil
 stack-data==0.6.3
     # via ipython
 threadpoolctl==3.5.0
