@@ -9,6 +9,8 @@ dependencies = [
     "numpy>=2.0.0",
     "scikit-learn>=1.5.1",
     "matplotlib>=3.9.1",
+    "pandas[plot]>=2.2.2",
+    "plotly>=5.22.0",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"

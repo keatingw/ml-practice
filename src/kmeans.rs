@@ -1,6 +1,8 @@
 use pyo3::prelude::*;
 use rand::prelude::*;
+use rand::seq::index::sample;
 
+/// KMeans fitting class implemented in Rust
 #[pyclass]
 pub struct KMeansRust {
     #[pyo3(get)]
@@ -13,26 +15,33 @@ pub struct KMeansRust {
 
 #[pymethods]
 impl KMeansRust {
+    /// Create KMeansRust object and fit to the data
     #[new]
-    pub fn fit_predict(num_centers: usize, max_iter: usize, data: Vec<Vec<f64>>) -> PyResult<Self> {
+    pub fn new(num_centers: usize, max_iter: usize, data: Vec<Vec<f64>>) -> PyResult<Self> {
         let mut rng = thread_rng();
-        let init_center_idx = rand::seq::index::sample(&mut rng, data.len(), num_centers);
+
+        // Set initial centers to random set of points
+        let init_center_idx = sample(&mut rng, data.len(), num_centers);
         let mut centers: Vec<Vec<f64>> = init_center_idx
             .into_iter()
             .map(|x| data[x].clone())
             .collect();
-        let mut n = 0;
+
+        // start looping to assign points to their clusters
         let mut allocation: Vec<usize> = vec![0; data.len()];
         let mut prev_allocation: Vec<usize> = vec![0; data.len()];
-        while n < max_iter {
+
+        for _ in 0..max_iter {
+            // For each row, assign to its nearest center based on euclidean distance
             for (rownum, row) in data.iter().enumerate() {
                 let center_dists: Vec<f64> = centers
                     .iter()
                     .map(|c| {
                         c.iter()
                             .zip(row)
-                            .fold(0f64, |acc, e| acc + (e.0 - e.1).powi(2))
-                            .powf(0.5)
+                            .map(|(x1, x2)| (x1 - x2).powi(2))
+                            .sum::<f64>()
+                            .sqrt()
                     })
                     .collect();
                 allocation[rownum] = center_dists
@@ -42,12 +51,17 @@ impl KMeansRust {
                     .unwrap()
                     .0;
             }
+
+            // For each cluster, recalculate its center after the new allocations
             for i in 0..num_centers {
+                // Get all points in the cluster
                 let allocated_to_center = allocation
                     .iter()
                     .zip(&data)
                     .filter_map(|(alloc, x)| if *alloc == i { Some(x.clone()) } else { None })
                     .collect::<Vec<Vec<f64>>>();
+
+                // For recompute the center as the average of the cluster's points
                 centers[i] = allocated_to_center
                     .iter()
                     .fold(vec![0f64; data[0].len()], |acc, e| {
@@ -57,11 +71,14 @@ impl KMeansRust {
                             .collect()
                     })
             }
+
+            // Basic stopping criterion for if allocations have converged
             if allocation == prev_allocation {
                 break;
             }
+
+            // save prior state and continue iterations
             prev_allocation = allocation.clone();
-            n += 1;
         }
         Ok(KMeansRust {
             centers,
