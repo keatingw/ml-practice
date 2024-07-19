@@ -17,8 +17,13 @@ pub struct KMeansRust {
 impl KMeansRust {
     /// Create KMeansRust object and fit to the data
     #[new]
-    pub fn new(num_centers: usize, max_iter: usize, data: Vec<Vec<f64>>) -> PyResult<Self> {
-        let mut rng = thread_rng();
+    pub fn new(
+        num_centers: usize,
+        max_iter: usize,
+        data: Vec<Vec<f64>>,
+        seed: u64,
+    ) -> PyResult<Self> {
+        let mut rng = StdRng::seed_from_u64(seed);
 
         // Set initial centers to random set of points
         let init_center_idx = sample(&mut rng, data.len(), num_centers);
@@ -34,20 +39,11 @@ impl KMeansRust {
         for _ in 0..max_iter {
             // For each row, assign to its nearest center based on euclidean distance
             for (rownum, row) in data.iter().enumerate() {
-                let center_dists: Vec<f64> = centers
+                allocation[rownum] = centers
                     .iter()
-                    .map(|c| {
-                        c.iter()
-                            .zip(row)
-                            .map(|(x1, x2)| (x1 - x2).powi(2))
-                            .sum::<f64>()
-                            .sqrt()
-                    })
-                    .collect();
-                allocation[rownum] = center_dists
-                    .iter()
+                    .map(|c| squared_euclidean_dist(c, row))
                     .enumerate()
-                    .min_by(|l, r| l.1.partial_cmp(r.1).unwrap())
+                    .min_by(|l, r| l.1.partial_cmp(&r.1).unwrap())
                     .unwrap()
                     .0;
             }
@@ -86,4 +82,12 @@ impl KMeansRust {
             max_iter,
         })
     }
+}
+
+/// Calculates sum of squared differences
+fn squared_euclidean_dist(l: &[f64], r: &[f64]) -> f64 {
+    l.iter()
+        .zip(r)
+        .map(|(x1, x2)| (x1 - x2).powi(2))
+        .sum::<f64>()
 }

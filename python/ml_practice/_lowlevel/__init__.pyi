@@ -8,5 +8,5 @@ class KMeansRust:
     max_iter: int
 
     def __new__(
-        cls, num_centers: int, max_iter: int, data: list[list[float]]
+        cls, num_centers: int, max_iter: int, data: list[list[float]], seed: int
     ) -> Self: ...
