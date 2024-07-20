@@ -4,9 +4,6 @@ from typing import Any
 
 import numpy as np
 import numpy.typing as npt
-from sklearn.datasets import load_iris  # type: ignore[import-untyped]
-
-data = load_iris()["data"]
 
 
 class KMeansNumpy:

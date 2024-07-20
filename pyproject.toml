@@ -69,6 +69,7 @@ ignore = [
     "ANN102",  # allow no type hint on cls
     "ANN401",  # allow Any on kwargs
     "ISC001",  # conflict with formatter
+    "CPY001",  # allow no copyright notices
 ]
 fixable = [
     "I001", # autofix for isort
