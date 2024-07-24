@@ -23,7 +23,7 @@ pub struct KMeansRust {
 
 #[pymethods]
 impl KMeansRust {
-    /// Create KMeansRust object and fit to the data
+    /// Create KMeansRust object
     #[new]
     #[pyo3(signature=(num_centers, max_iter, seed=None))]
     pub fn new(num_centers: usize, max_iter: usize, seed: Option<u64>) -> PyResult<Self> {

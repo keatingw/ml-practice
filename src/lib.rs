@@ -1,5 +1,6 @@
 use pyo3::prelude::*;
 mod kmeans;
+mod linreg;
 mod utils;
 
 /// Prints a message.
@@ -13,5 +14,6 @@ fn hello() -> PyResult<String> {
 fn _lowlevel(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(hello, m)?)?;
     m.add_class::<kmeans::KMeansRust>()?;
+    m.add_class::<linreg::LinRegGDRust>()?;
     Ok(())
 }

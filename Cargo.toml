@@ -10,5 +10,5 @@ crate-type = ["cdylib"]
 
 [dependencies]
 anyhow = "1.0.86"
-pyo3 = "0.22.2"
+pyo3 = { version = "0.22.2", features = ["anyhow"] }
 rand = "0.8.5"
