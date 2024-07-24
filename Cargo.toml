@@ -9,5 +9,6 @@ name = "ml_practice"
 crate-type = ["cdylib"]
 
 [dependencies]
-pyo3 = "0.19.0"
+anyhow = "1.0.86"
+pyo3 = "0.22.2"
 rand = "0.8.5"
