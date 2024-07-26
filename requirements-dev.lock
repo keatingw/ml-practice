@@ -22,6 +22,8 @@ executing==2.0.1
     # via stack-data
 fonttools==4.53.1
     # via matplotlib
+iniconfig==2.0.0
+    # via pytest
 ipython==8.26.0
 jedi==0.19.1
     # via ipython
@@ -47,6 +49,7 @@ numpy==2.0.0
 packaging==24.1
     # via matplotlib
     # via plotly
+    # via pytest
 pandas==2.2.2
     # via ml-practice
 parso==0.8.4
@@ -58,6 +61,8 @@ pillow==10.4.0
 pip==24.1.2
 plotly==5.22.0
     # via ml-practice
+pluggy==1.5.0
+    # via pytest
 prompt-toolkit==3.0.47
     # via ipython
 ptyprocess==0.7.0
@@ -68,6 +73,7 @@ pygments==2.18.0
     # via ipython
 pyparsing==3.1.2
     # via matplotlib
+pytest==8.3.2
 python-dateutil==2.9.0.post0
     # via matplotlib
     # via pandas
