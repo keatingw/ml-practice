@@ -5,12 +5,12 @@ from typing import Any
 import numpy as np
 import numpy.typing as npt
 import pytest
+from py_algos.linreg import LinearRegressionGD, LinearRegressionNumpy
+from rs_algos import LinRegGDRust
 from sklearn.linear_model import LinearRegression
 
-from ml_practice.linreg import LinearRegressionGD, LinearRegressionNumpy, LinRegGDRust
 
-
-@pytest.fixture()
+@pytest.fixture
 def linreg_input() -> (
     tuple[npt.NDArray[np.floating[Any]], npt.NDArray[np.floating[Any]]]
 ):

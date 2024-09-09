@@ -31,7 +31,6 @@ members = ["packages/py_algos", "packages/rs_algos"]
 
 [tool.ruff]
 target-version = "py312"
-src = ["python"]
 fix = true                                                  # autofix on (only for fixable list)
 show-fixes = true                                           # show fixes made
 include = ["*.py", "*.pyi", "**/pyproject.toml", "*.ipynb"]
