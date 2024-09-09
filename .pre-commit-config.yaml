@@ -42,7 +42,7 @@ repos:
     hooks:
       - id: mypy
         name: mypy
-        entry: rye run mypy python
+        entry: uv run mypy src packages
         language: system
         types: [python]
         files: '^.*\.py'

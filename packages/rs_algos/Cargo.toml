@@ -1,11 +1,11 @@
 [package]
-name = "ml-practice"
+name = "rs_algos"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
-name = "ml_practice"
+name = "rs_algos"
 crate-type = ["cdylib"]
 
 [dependencies]
