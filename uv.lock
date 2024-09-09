@@ -5,6 +5,13 @@ resolution-markers = [
     "python_full_version >= '3.12'",
 ]
 
+[manifest]
+members = [
+    "ml-practice",
+    "py-algos",
+    "rs-algos",
+]
+
 [[package]]
 name = "asttokens"
 version = "2.4.1"
@@ -293,11 +300,8 @@ name = "ml-practice"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "matplotlib" },
-    { name = "numpy" },
-    { name = "pandas", extra = ["plot"] },
-    { name = "plotly" },
-    { name = "scikit-learn" },
+    { name = "py-algos" },
+    { name = "rs-algos" },
 ]
 
 [package.dev-dependencies]
@@ -311,11 +315,8 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "matplotlib", specifier = ">=3.9.1" },
-    { name = "numpy", specifier = ">=2.0.0" },
-    { name = "pandas", extras = ["plot"], specifier = ">=2.2.2" },
-    { name = "plotly", specifier = ">=5.22.0" },
-    { name = "scikit-learn", specifier = ">=1.5.1" },
+    { name = "py-algos", editable = "packages/py_algos" },
+    { name = "rs-algos", editable = "packages/rs_algos" },
 ]
 
 [package.metadata.requires-dev]
@@ -571,6 +572,27 @@ wheels = [
 ]
 
 [[package]]
+name = "py-algos"
+version = "0.1.0"
+source = { editable = "packages/py_algos" }
+dependencies = [
+    { name = "matplotlib" },
+    { name = "numpy" },
+    { name = "pandas", extra = ["plot"] },
+    { name = "plotly" },
+    { name = "scikit-learn" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "matplotlib", specifier = ">=3.9.1" },
+    { name = "numpy", specifier = ">=2.0.0" },
+    { name = "pandas", extras = ["plot"], specifier = ">=2.2.2" },
+    { name = "plotly", specifier = ">=5.22.0" },
+    { name = "scikit-learn", specifier = ">=1.5.1" },
+]
+
+[[package]]
 name = "pygments"
 version = "2.18.0"
 source = { registry = "https://pypi.org/simple" }
@@ -623,6 +645,11 @@ sdist = { url = "https://files.pythonhosted.org/packages/90/26/9f1f00a5d021fff16
 wheels = [
     { url = "https://files.pythonhosted.org/packages/9c/3d/a121f284241f08268b21359bd425f7d4825cffc5ac5cd0e1b3d82ffd2b10/pytz-2024.1-py2.py3-none-any.whl", hash = "sha256:328171f4e3623139da4983451950b28e95ac706e13f3f2630a879749e7a8b319", size = 505474 },
 ]
+
+[[package]]
+name = "rs-algos"
+version = "0.1.0"
+source = { editable = "packages/rs_algos" }
 
 [[package]]
 name = "ruff"

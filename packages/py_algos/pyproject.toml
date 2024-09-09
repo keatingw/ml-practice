@@ -1,0 +1,17 @@
+[project]
+name = "py-algos"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy>=2.0.0",
+    "scikit-learn>=1.5.1",
+    "matplotlib>=3.9.1",
+    "pandas[plot]>=2.2.2",
+    "plotly>=5.22.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

@@ -6,12 +6,12 @@ mod utils;
 /// Prints a message.
 #[pyfunction]
 fn hello() -> PyResult<String> {
-    Ok("Hello from ml-practice!".into())
+    Ok("Hello from rs_algos!".into())
 }
 
 /// A Python module implemented in Rust.
 #[pymodule]
-fn _lowlevel(m: &Bound<'_, PyModule>) -> PyResult<()> {
+fn rs_algos(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_function(wrap_pyfunction!(hello, m)?)?;
     m.add_class::<kmeans::KMeansRust>()?;
     m.add_class::<linreg::LinRegGDRust>()?;

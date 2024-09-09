@@ -2,7 +2,7 @@
 
 from dataclasses import dataclass, field
 
-from ml_practice.utils import matvecmul
+from py_algos.utils import matvecmul
 
 
 @dataclass
