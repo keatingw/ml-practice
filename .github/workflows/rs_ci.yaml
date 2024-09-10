@@ -1,0 +1,26 @@
+name: Cargo CI for Rust extension
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - packages/rs_algos/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - packages/rs_algos/**
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  build_and_test:
+    name: Rust project - latest
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/rs_algos
+    steps:
+      - uses: actions/checkout@v4
+      - run: rustup update stable && rustup default stable
+      - run: cargo build --verbose
+      - run: cargo test --verbose
