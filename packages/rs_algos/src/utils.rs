@@ -55,4 +55,10 @@ mod tests {
         let mvm = matvecmul(&l, &colvec).unwrap_or_default();
         assert_eq!(mvm, vec![26.0, 38.0]);
     }
+
+    /// Test for single case of matvecmul (matrix x col vector)
+    #[test]
+    fn test_fail() {
+        assert!(false)
+    }
 }
