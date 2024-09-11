@@ -36,6 +36,9 @@ fix = true                                                  # autofix on (only f
 show-fixes = true                                           # show fixes made
 include = ["*.py", "*.pyi", "**/pyproject.toml", "*.ipynb"]
 
+[tool.ruff.isort]
+known-first-party = ["py_algos", "rs_algos", "ml_api"]
+
 [tool.ruff.format]
 docstring-code-format = true
 
