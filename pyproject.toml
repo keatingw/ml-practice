@@ -9,10 +9,6 @@ dependencies = ["py_algos", "rs_algos", "ml_api"]
 readme = "README.md"
 requires-python = ">=3.11"
 
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
-
 [tool.uv]
 dev-dependencies = [
     "pip>=24.1.2",
