@@ -10,7 +10,7 @@ class LinearRegressionGD:
     """Implements Linear regression in native python using gradient descent."""
 
     intercept: bool = True
-    max_iter: int = 100
+    num_iter: int = 100
     lr: float = 0.01
     weights: list[float] = field(init=False, repr=False)
 
@@ -28,7 +28,7 @@ class LinearRegressionGD:
 
         m = len(data)
         self.weights = [1.0 for _ in range(len(data[0]))]
-        for _ in range(self.max_iter):
+        for _ in range(self.num_iter):
             pred = matvecmul(data, self.weights)
             grad = matvecmul(
                 list(zip(*data)),  # type: ignore[arg-type]

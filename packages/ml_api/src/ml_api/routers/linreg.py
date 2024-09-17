@@ -17,6 +17,13 @@ class LinRegInput(BaseModel):
     target: list[float]
 
 
+class LinRegGDInput(LinRegInput):
+    """Input for linear regression model routes that use gradient descent."""
+
+    lr: float = 0.01
+    num_iter: int = 100
+
+
 class LinRegOutput(BaseModel):
     """Output for linear regression model routes."""
 
@@ -32,10 +39,14 @@ router = APIRouter(
 
 @router.post("/native_py")
 def linreg_native_py(
-    linreg_input: LinRegInput,
+    linreg_input: LinRegGDInput,
 ) -> LinRegOutput:
     """Linear regression endpoint for native Python."""
-    lr_py = LinearRegressionGD(intercept=linreg_input.intercept)
+    lr_py = LinearRegressionGD(
+        intercept=linreg_input.intercept,
+        num_iter=linreg_input.num_iter,
+        lr=linreg_input.lr,
+    )
     pred_py = lr_py.fit_predict(linreg_input.data, linreg_input.target)
     return LinRegOutput(coefficients=lr_py.weights, predictions=pred_py)
 
@@ -56,10 +67,14 @@ def linreg_numpy_py(
 
 @router.post("/rs")
 def linreg_rs(
-    linreg_input: LinRegInput,
+    linreg_input: LinRegGDInput,
 ) -> LinRegOutput:
     """Linear regression endpoint for Rust."""
-    lr_rs = LinRegGDRust(intercept=linreg_input.intercept)
+    lr_rs = LinRegGDRust(
+        intercept=linreg_input.intercept,
+        num_iter=linreg_input.num_iter,
+        lr=linreg_input.lr,
+    )
     lr_rs.fit(linreg_input.data, linreg_input.target)
     assert lr_rs.weights is not None  # noqa: S101
     pred_rs = lr_rs.predict(linreg_input.data)

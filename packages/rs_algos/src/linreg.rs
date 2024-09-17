@@ -6,10 +6,10 @@ use super::utils;
 #[pyclass]
 pub struct LinRegGDRust {
     #[pyo3(get)]
-    pub lr: f64,
+    pub intercept: bool,
 
     #[pyo3(get)]
-    pub intercept: bool,
+    pub lr: f64,
 
     #[pyo3(get)]
     pub num_iter: usize,
@@ -22,11 +22,11 @@ pub struct LinRegGDRust {
 impl LinRegGDRust {
     /// Create LinRegGDRust object
     #[new]
-    #[pyo3(signature=(lr=0.01, intercept=true, num_iter=100))]
-    pub fn new(lr: f64, intercept: bool, num_iter: usize) -> PyResult<Self> {
+    #[pyo3(signature=(intercept=true, lr=0.01, num_iter=100))]
+    pub fn new(intercept: bool, lr: f64, num_iter: usize) -> PyResult<Self> {
         Ok(LinRegGDRust {
-            lr,
             intercept,
+            lr,
             num_iter,
             weights: None,
         })
