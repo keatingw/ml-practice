@@ -38,9 +38,7 @@ router = APIRouter(
 
 
 @router.post("/native_py")
-def linreg_native_py(
-    linreg_input: LinRegGDInput,
-) -> LinRegOutput:
+def linreg_native_py(linreg_input: LinRegGDInput) -> LinRegOutput:
     """Linear regression endpoint for native Python."""
     lr_py = LinearRegressionGD(
         intercept=linreg_input.intercept,
@@ -52,9 +50,7 @@ def linreg_native_py(
 
 
 @router.post("/numpy_py")
-def linreg_numpy_py(
-    linreg_input: LinRegInput,
-) -> LinRegOutput:
+def linreg_numpy_py(linreg_input: LinRegInput) -> LinRegOutput:
     """Linear regression endpoint for numpy."""
     lr_numpy = LinearRegressionNumpy(intercept=linreg_input.intercept)
     pred_numpy = lr_numpy.fit_predict(
@@ -66,9 +62,7 @@ def linreg_numpy_py(
 
 
 @router.post("/rs")
-def linreg_rs(
-    linreg_input: LinRegGDInput,
-) -> LinRegOutput:
+def linreg_rs(linreg_input: LinRegGDInput) -> LinRegOutput:
     """Linear regression endpoint for Rust."""
     lr_rs = LinRegGDRust(
         intercept=linreg_input.intercept,
