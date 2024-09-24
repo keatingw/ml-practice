@@ -27,4 +27,4 @@ jobs:
       - name: Type check
         run: uv run mypy src packages
       - name: Run tests
-        run: uv run pytest tests
+        run: uv run pytest
