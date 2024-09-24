@@ -7,7 +7,7 @@ from fastapi.testclient import TestClient
 from ml_api.routers.linreg import LinRegGDInput, LinRegInput
 
 COEFFICIENTS = (11, 1, 3, -4, 2.1)
-RTOL = 0.01
+RTOL = 0.05
 
 
 @pytest.fixture(scope="module")

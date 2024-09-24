@@ -21,10 +21,10 @@ jobs:
       - name: Install the project
         run: uv sync --all-extras --dev
       - name: Format
-        run: uv run ruff format src packages
+        run: uv run ruff format packages
       - name: Lint
-        run: uv run ruff check --output-format=github src packages
+        run: uv run ruff check --output-format=github packages
       - name: Type check
-        run: uv run mypy src packages
+        run: uv run mypy packages
       - name: Run tests
         run: uv run pytest

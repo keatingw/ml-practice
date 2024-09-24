@@ -1,6 +1,7 @@
 # ml-practice
 
-A workspace structured project for revising machine learning algorithms.
+A workspace structured project to help revise machine learning algorithms, `maturin`-based
+Rust extension modules, and experiment with `uv` and its monorepo.
 
 The top-level workspace defines the development dependencies and any cross-cutting
 tests. Underlying this there are 3 packages:
