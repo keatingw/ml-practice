@@ -12,7 +12,7 @@ class KMeans:
 
     rng: random.Random
     n_clusters: int
-    _datapoints: list[tuple[list[float], int]] = field(default_factory=list)
+    _datapoints: list[tuple[list[float], int]] = field(default_factory=list, init=False)
     """Maps datapoints to clusters."""
 
     def fit(self, points: list[list[float]]) -> None:
