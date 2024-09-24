@@ -5,9 +5,10 @@ from typing import Any
 import numpy as np
 import numpy.typing as npt
 import pytest
+from sklearn.linear_model import LinearRegression
+
 from py_algos.linreg import LinearRegressionGD, LinearRegressionNumpy
 from rs_algos import LinRegGDRust
-from sklearn.linear_model import LinearRegression
 
 
 @pytest.fixture
@@ -25,7 +26,7 @@ def test_linreg_outputs(
     """Test linear regression manual outputs vs sklearn implementation."""
     lr_sk = LinearRegression()
     lr_np = LinearRegressionNumpy()
-    lr_py = LinearRegressionGD(max_iter=10_000, lr=0.01)
+    lr_py = LinearRegressionGD(num_iter=10_000, lr=0.01)
     lr_rs = LinRegGDRust(lr=0.01, num_iter=10_000)
 
     lr_sk.fit(linreg_input[0], linreg_input[1])
