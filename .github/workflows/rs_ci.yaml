@@ -8,8 +8,8 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - packages/rs_algos/**
+      # paths:
+      #   - packages/rs_algos/**
 env:
   CARGO_TERM_COLOR: always
 jobs:
