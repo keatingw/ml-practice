@@ -9,8 +9,8 @@ dependencies = ["py_algos", "rs_algos", "ml_api"]
 readme = "README.md"
 requires-python = ">=3.11"
 
-[tool.uv]
-dev-dependencies = [
+[dependency-groups]
+dev = [
     "pip>=24.1.2",
     "ipython>=8.26.0",
     "ruff>=0.5.2",
