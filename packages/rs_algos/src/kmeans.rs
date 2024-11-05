@@ -64,7 +64,7 @@ impl KMeansRust {
             }
 
             // For each cluster, recalculate its center after the new allocations
-            for i in 0..self.num_centers {
+            for (i, center) in centers.iter_mut().enumerate() {
                 // Get all points in the cluster
                 let allocated_to_center = allocations
                     .iter()
@@ -73,7 +73,7 @@ impl KMeansRust {
                     .collect::<Vec<Vec<f64>>>();
 
                 // For recompute the center as the average of the cluster's points
-                centers[i] = allocated_to_center
+                *center = allocated_to_center
                     .iter()
                     .fold(vec![0f64; data[0].len()], |acc, e| {
                         acc.iter()
