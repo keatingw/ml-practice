@@ -77,7 +77,7 @@ impl LinRegGDRust {
 }
 
 impl LinRegGDRust {
-    fn add_intercept(data: &mut [Vec<f64>]) -> () {
+    fn add_intercept(data: &mut [Vec<f64>]) {
         data.iter_mut().for_each(|x| x.insert(0, 1.0));
     }
 }
