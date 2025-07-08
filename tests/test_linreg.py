@@ -12,9 +12,9 @@ from rs_algos import LinRegGDRust
 
 
 @pytest.fixture
-def linreg_input() -> (
-    tuple[npt.NDArray[np.floating[Any]], npt.NDArray[np.floating[Any]]]
-):
+def linreg_input() -> tuple[
+    npt.NDArray[np.floating[Any]], npt.NDArray[np.floating[Any]]
+]:
     """Inputs for linear regressino testing."""
     rng = np.random.default_rng(1)
     return rng.normal(0, 10, (1_000, 4)), rng.normal(0, 1, (1_000))
@@ -39,10 +39,10 @@ def test_linreg_outputs(
     pyarr = np.array(lr_py.weights)
     rsarr = np.array(lr_rs.weights)
 
-    assert np.allclose(
-        skarr, nparr
-    ), "sklearn weights different to python numpy weights"
-    assert np.allclose(
-        skarr, pyarr
-    ), "sklearn weights different to native python weights"
+    assert np.allclose(skarr, nparr), (
+        "sklearn weights different to python numpy weights"
+    )
+    assert np.allclose(skarr, pyarr), (
+        "sklearn weights different to native python weights"
+    )
     assert np.allclose(skarr, rsarr), "sklearn weights different to rust weights"

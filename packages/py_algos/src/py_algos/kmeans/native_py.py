@@ -59,5 +59,5 @@ def get_centroid(cluster: list[list[float]]) -> list[float]:
 def euclidean_distance(p1: list[float], p2: list[float]) -> float:
     """Calculates euclidean distance between two points."""
     return cast(
-        float, sum((i1 - i2) ** 2 for i1, i2 in zip(p1, p2, strict=True)) ** 0.5
+        "float", sum((i1 - i2) ** 2 for i1, i2 in zip(p1, p2, strict=True)) ** 0.5
     )
