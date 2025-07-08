@@ -26,5 +26,7 @@ jobs:
         run: uv run ruff check --output-format=github packages
       - name: Type check
         run: uv run mypy packages
+      - name: Type check
+        run: uv run ty check
       - name: Run tests
         run: uv run pytest
