@@ -23,13 +23,13 @@ class LinRegGDRust:
     def __init__(
         self,
         lr: float = 0.01,
-        intercept: bool = True,  # noqa: FBT001, FBT002
+        intercept: bool = True,
         num_iter: int = 100,
     ) -> None: ...
     def __new__(
         cls,
         lr: float = 0.01,
-        intercept: bool = True,  # noqa: FBT001, FBT002
+        intercept: bool = True,
         num_iter: int = 100,
     ) -> Self: ...
     def fit(self, data: list[list[float]], target: list[float]) -> None: ...
